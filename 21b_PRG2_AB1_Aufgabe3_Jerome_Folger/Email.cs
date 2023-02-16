@@ -8,20 +8,28 @@ namespace _21b_PRG2_AB1_Aufgabe3_Jerome_Folger
 {
     internal class Email : IMessage
     {
-        public string Message { get; set; }
-        public void SendMessage(string message)
+        private MessageBroker messageBroker;
+        public string emailAdress;
+        private string emailMessages;
+        public Email(string email, MessageBroker messageBroker)
         {
-            Message = message;
+            this.messageBroker = messageBroker;
+            this.emailAdress = email;
+        }
+        public void SendMessage(string reciever, string message)
+        {
+            messageBroker.AddMessage(reciever, message);
         }
 
-        public string RecieveMessage(string message)
+        public void RecieveMessage()
         {
-            return Message;
+            this.emailMessages = messageBroker.GetMessages(this.emailAdress);
         }
 
         public void OutputMessage()
         {
-            Console.WriteLine(Message);
+            Console.WriteLine();
+            Console.WriteLine(emailMessages);
         }
     }
 }

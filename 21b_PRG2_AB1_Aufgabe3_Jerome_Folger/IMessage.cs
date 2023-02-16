@@ -9,11 +9,9 @@ namespace _21b_PRG2_AB1_Aufgabe3_Jerome_Folger
 {
     internal interface IMessage
     {
-        string Message { get; set; }
+        void SendMessage(string message, string reciever);
 
-        void SendMessage(string message);
-
-        public string RecieveMessage(string message);
+        public void RecieveMessage();
 
         public void OutputMessage();
     }
